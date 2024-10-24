@@ -1,27 +1,45 @@
 
-Num1 = float(input("Number: "))
-Factor = input("")
-Num2 = float(input("Number: "))
-def Add(Num1, Num2):
-    return(Num1 + Num2)
-def Sub(Num1, Num2):
-    return(Num1 - Num2)
-def Mul(Num1, Num2):
-    return(Num1*Num2)
-def Div(Num1, Num2):
-    return(Num1 // Num2)
+from unicodedata import numeric
 
-if Factor == "+":
+
+Num1 = input("Number: ")
+Factor = input("")
+Num2 = input("Number: ")
+Div = ["/", "//"]
+Pow1 = ["P", "p"]
+is_number = True 
+if (Factor in Pow1) and (Factor is numeric):
+    Num1 = int(Num1)
+    Num2 = int(Num2)
+elif (Factor not in Pow1) and (Factor is numeric):
+    Num1 = float(Num1)
+    Num2 = float(Num2)
+else: 
+    is_number = False
+    print("Syntax Error")
+
+def Pow(Num1, Num2):
+    result = 1
+    for number in range(Num2):
+        result = result*Num1
+    return result
+
+if is_number is False:
+    print("Sytnax Error")
+elif Factor == "+":
     print("Your Answer is: ", end='\n')
-    print(Add(Num1, Num2))
+    print(Num1 + Num2)
 elif Factor == "-":
     print("Your Answer is: ", end='\n')
-    print(Sub(Num1, Num2))
+    print(Num1 - Num2)
 elif Factor == "*":
     print("Your Answer is: ", end='\n')
-    print(Mul(Num1, Num2))
-elif Factor == "/" or "//":
+    print(Num1 * Num2)
+elif Factor in Div:
     print("Your Answer is: ", end='\n')
-    print(Div(Num1, Num2))
+    print(Num1 // Num2)
+elif Factor in Pow1:
+    print("Your Answer is: ", end='\n')
+    print(Pow(Num1, Num2))
 else:
     print("Syntax Error ")
