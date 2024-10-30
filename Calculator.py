@@ -12,7 +12,7 @@ Pow1 = ["P", "p"]
 is_number = True 
 Fac = ("+", "-","*",)
 
-if (Factor in Pow1) and (Factor is numeric):
+if (Factor in Pow1) and (Factor is not numeric):
     Num1 = int(Num1)
     Num2 = int(Num2)
 elif (Factor not in Pow1) and (Factor is numeric):
